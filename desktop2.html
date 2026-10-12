@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <title>SnakePick - Air Force 1 Blancas</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(29, 29, 29);
+            color: black;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .pagina {
+            width: 100%;
+            min-height: 100%;
+            background: #fff;
+        }
+        
+        .header {
+            min-height: 105px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 42px;
+            gap: 25px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 210px;
+            height: auto;
+        }
+
+        .registro {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .registro a {
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .icono {
+            font-size: 22px !important;
+        }
+
+        .producto {
+            display: flex;
+            gap: 50px;
+            padding: 45px 35px;
+        }
+
+        .galeria {
+            display: flex;
+            gap: 10px;
+            width: 55%;
+        }
+
+        .miniaturas {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            width: 70px;
+        }
+
+        .miniaturas img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            background: #f3f3f3;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .imagen-principal {
+            flex: 1;
+            height: 470px;
+            background: #f3f3f3;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagen-principal img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .informacion {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0;
+        }
+
+        .nombre-producto {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .precio-producto {
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .descripcion {
+            color: #555;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 22px;
+        }
+
+        .opciones {
+            display: flex;
+            gap: 12px;
+        }
+
+        .tallas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            width: 55%;
+        }
+
+        .tallas button {
+            width: calc(50% - 2px);
+            padding: 8px 3px;
+            background: white;
+            border: 1px solid #eee;
+            color: #222;
+            font-size: 9px;
+            cursor: pointer;
+        }
+
+        .tallas button:hover {
+            border: 1px solid black;
+        }
+
+        .tallas button:focus {
+            background: black;
+            color: white;
+        }
+
+
+        .apartado {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 9px 3px;
+            border-top: 1px solid #999;
+            font-family: Georgia, serif;
+            font-size: 14px;
+        }
+
+        .apartado span {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .enlaces {
+            margin-top: 25px;
+        }
+
+        .enlaces a {
+            display: block;
+            margin-bottom: 12px;
+            color: #555;
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 11px;
+        }
+
+        .boton-compra {
+            align-self: flex-end;
+            margin-top: 25px;
+            padding: 15px 25px;
+            text-decoration: none;
+            border: none;
+            border-radius: 12px;
+            background: black;
+            color: white;
+            font-family: Georgia, serif;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .boton-compra:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="pagina">
+
+        <header class="header">
+
+            <nav class="nav">
+                <a href="./desktop1.html">☰ Menú</a>
+                <a href="#">⌕ Buscar</a>
+            </nav>
+
+            <div class="logo">
+                <img src="./img/Logotipo geométrico SNEAKPICK en negro.png"
+                    alt="Logo SnakePick">
+            </div>
+
+            <div class="registro">
+                <a href="#">Contáctenos</a>
+                <a href="#" class="icono" aria-label="Favoritos">♡</a>
+                <a href="#modalLogin" class="icono" aria-label="Mi cuenta">♙</a>
+                <a href="#" class="icono" aria-label="Bolsa de compra"></a>
+            </div>
+
+        </header>
+
+        <main class="producto">
+
+            <section class="galeria">
+
+                <div class="miniaturas">
+                    <img src="./img/Zapatillas blancas AF1 en pareja.png" alt="" > 
+                    <img src="./img/Zapatillas blancas AF1 en pareja.png" alt="" >
+                    <img src="./img/Zapatillas blancas AF1 en pareja.png" alt="" >
+                    <img src="./img/Zapatillas blancas AF1 en pareja.png" alt="" >
+                    <img src="./img/Zapatillas blancas AF1 en pareja.png" alt="" > 
+                    <img src="./img/Zapatillas blancas AF1 en pareja.png" alt="" > 
+                </div>
+
+                <div class="imagen-principal">
+                    <img src="./img/Zapatillas blancas AF1 en pareja.png"
+                        alt="Zapatillas Air Force 1 blancas">
+                </div>
+
+            </section>
+
+            <section class="informacion">
+
+                <h1 class="nombre-producto">Air Force 1 Blancas</h1>
+
+                <p class="precio-producto">120,00 €</p>
+
+                <p class="descripcion">
+                    Cómodas, duraderas y atemporales: son las número 1
+                    por una razón. El diseño clásico de los 80 se combina
+                    con piel lisa y detalles llamativos para conseguir
+                    un estilo perfecto tanto en la cancha como fuera de ella.
+                </p>
+                <br>
+                <br>
+                <div class="opciones">
+                    <div class="tallas">
+                        <button type="button" disabled>EU 35.5</button>
+                        <button type="button" disabled>EU 36</button>
+                        <button type="button">EU 36.5</button>
+                        <button type="button">EU 37.5</button>
+                        <button type="button">EU 38</button>
+                        <button type="button">EU 38.5</button>
+                        <button type="button" disabled>EU 39</button>
+                        <button type="button">EU 40</button>
+                        <button type="button" disabled>EU 40.5</button>
+                        <button type="button" disabled>EU 41</button>
+                        <button type="button">EU 42</button>
+                        <button type="button">EU 42.5</button>
+                        <button type="button">EU 43</button>
+                        <button type="button">EU 44</button>
+                        <button type="button">EU 44.5</button>
+                        <button type="button">EU 45</button>
+                        <button type="button" disabled>EU 45.5</button>
+                        <button type="button" disabled>EU 46</button>
+                        <button type="button" disabled>EU 47</button>
+                        <button type="button" disabled>EU 48</button>
+                        <button type="button" disabled>EU 48.5</button>
+                        <button type="button">EU 49.5</button>
+                    </div>
+
+                    <div class="apartados">
+                        <div class="apartado">
+                            <p>Sostenibilidad</p>
+                            <span>+</span>
+                        </div>
+
+                        <div class="apartado">
+                            <p>Consejos de cuidado</p>
+                            <span>+</span>
+                        </div>
+
+                        <div class="apartado">
+                            <p>Servicios en tienda</p>
+                            <span>+</span>
+                        </div>
+
+                        <div class="enlaces">
+                            <a href="#">Envíos y devoluciones gratuitos ↗</a>
+                            <a href="#">El arte de regalar ↗</a>
+                        </div>
+                    </div>
+
+                </div>
+                <a href="./desktop3.html" class="boton-compra">Comprar 120,00 €</a>
+            </section>
+        </main>
+        <footer>
+        </footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>SnakePick</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(29, 29, 29);
+            color: black;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .pagina {
+            width: 100%;
+            min-height: 100%;
+            background: #fff;
+        }
+
+        .header {
+            height: 150px;
+            border-bottom: 1px solid gray;
+            display: flex;
+            align-items: center;
+            padding: 0 42px;
+            gap: 78px;
+        }
+
+        .logo {
+            height: 50px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 55px;
+            width: 55px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .nav a {
+            font-size: 18px;
+            color: #b4acac;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: all 0.9s ease;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            transition: 1s ease-in-out;
+            text-decoration-line: underline;
+            color: #000000;
+        }
+
+        .buscar {
+            height: 42px;
+            flex: 1;
+            max-width: 416px;
+            margin-left: 18px;
+            background: #ddd;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .buscar input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 14px;
+            color: #111;
+        }
+
+        .registro {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-left: auto;
+        }
+
+        .login, .singup {
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            color: black;
+            transition: 0.3s case;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            min-width: 100px;
+            border: none;
+            outline: none;
+        }
+
+        .login:hover {
+            background: #271215;
+            color: white;
+            transition: 1s;
+            box-shadow: 
+                0 4px 20px rgba(78, 70, 71, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .singup:hover {
+            background: #271215;
+            color: white;
+            transition: 1s;
+            box-shadow: 
+                0 4px 20px rgba(78, 70, 71, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .productos {
+            padding: 38px clamp(20px, 5vw, 72px) 70px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 32px 24px;
+            align-items: stretch;
+        }
+
+        .carta-producto {
+            min-width: 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: #f4f4f4;
+            border: 1px solid #ededed;
+            border-radius: 14px;
+            overflow: hidden;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .carta-producto:hover {
+            transform: translateY(-5px);
+            border-color: #dedede;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .favorito {
+            position: absolute;
+            top: 13px;
+            right: 13px;
+            z-index: 2;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+            cursor: pointer;
+        }
+
+        .favorito:hover {
+            background: #fff;
+            transform: scale(1.08);
+        }
+
+        .favorito svg {
+            width: 19px;
+            height: 19px;
+            fill: none;
+            stroke: #222;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: fill 0.2s ease, stroke 0.2s ease;
+        }
+
+        .imagen-producto {
+            width: 100%;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .imagen-producto img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .info-producto {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            padding: 18px 17px 20px;
+            background: #fff;
+            border-top: 1px solid #eeeeee;
+        }
+
+        .info-producto a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .nombre-producto {
+            width: 100%;
+            min-height: 40px;
+            margin: 0;
+            color: #171717;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.45;
+            overflow: hidden;
+        }
+
+        .precio-producto {
+            flex: 1;
+            margin: 0;
+            color: #666;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .info-producto button {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 50%;
+            background: #171717;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+
+        .info-producto button:hover {
+            background: #383838;
+            transform: translateX(3px);
+        }
+
+        .modal-login {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-login:target {
+            display: flex;
+            z-index: 2;
+        }
+
+        .login-contenido {
+            position: relative;
+            width: 350px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .cerrar-login {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: black;
+            font-size: 25px;
+            text-decoration: none;
+        }
+
+        .login-logo {
+            display: block;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 20px;
+        }
+
+        .login-etiqueta {
+            text-align: center;
+            color: gray;
+            font-size: 11px;
+        }
+
+        .login-contenido h2 {
+            text-align: center;
+            color: #171717;
+        }
+
+        .login-descripcion {
+            text-align: center;
+            color: gray;
+            font-size: 14px;
+        }
+
+        .formulario-login {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .campo-login {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .campo-login label {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .campo-login input {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .boton-login {
+            padding: 12px;
+            background-color: #171717;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .boton-login:hover {
+            background-color: #444;
+        }
+
+        .login-registro {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: gray;
+        }
+
+        .login-registro a {
+            color: black;
+            font-weight: bold;
+        }
+
+        .boton-login {
+            display: block;
+            padding: 12px;
+            background-color: #171717;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .boton-login:hover {
+            background-color: #444;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="pagina">
+        <header class="header">
+            <div class="logo">
+                <img src="./img/logotipo SP.png" alt="Logo">
+            </div>
+            <div class="nav">
+                <a href="#">Explorar</a>
+                <a href="#">Exclusivo</a>
+                <a href="#">Mercado</a>
+            </div>
+
+            <div class="buscar">
+                <input type="text" id="buscar" placeholder="Buscar articulos...">
+            </div>
+            <div class="registro">
+                <a href="#modalLogin" class="login">Log in</a>
+                <button class="singup"> Sing up</button>
+            </div>
+            <hr>
+        </header>
+        <main class="productos">
+            <article class="carta-producto">
+                <button class="favorito" aria-label="Favorito">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.8 8.8
+                                C20.8 13.4 12 19 12 19
+                                C12 19 3.2 13.4 3.2 8.8
+                                C3.2 5.8 5.4 4 8 4
+                                C9.7 4 11.2 4.9 12 6.2
+                                C12.8 4.9 14.3 4 16 4
+                                C18.6 4 20.8 5.8 20.8 8.8Z"
+                        />
+                    </svg>
+                </button>
+                <div class="imagen-producto">
+                    <img src="./img/Zapatillas blancas AF1 en pareja.png" alt="Air Force 1 Blancas">
+                </div>
+                <div class="info-producto">
+                    <p class="nombre-producto"> Air Force 1 Blancas </p>
+                    <p class="precio-producto"> Desde 120,00 € </p>
+                    <a href="./desktop2.html">→</a>
+                </div>
+            </article>
+
+            
+            <article class="carta-producto">
+                <button class="favorito" aria-label="Favorito">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.8 8.8
+                                C20.8 13.4 12 19 12 19
+                                C12 19 3.2 13.4 3.2 8.8
+                                C3.2 5.8 5.4 4 8 4
+                                C9.7 4 11.2 4.9 12 6.2
+                                C12.8 4.9 14.3 4 16 4
+                                C18.6 4 20.8 5.8 20.8 8.8Z"
+                        />
+                    </svg>
+                </button>
+                <div class="imagen-producto">
+                    <img src="./img/Zapatillas Nike Air Retro en Beige Taupe.png" alt="Travis Scott x 1 Retro Low...">
+                </div>
+                <div class="info-producto">
+                    <p class="nombre-producto"> Travis Scott x 1 Retro Low... </p>
+                    <p class="precio-producto"> Desde 1700,00 € </p>
+                </div>
+            </article>
+
+            <article class="carta-producto">
+                <button class="favorito" aria-label="Favorito">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.8 8.8
+                                C20.8 13.4 12 19 12 19
+                                C12 19 3.2 13.4 3.2 8.8
+                                C3.2 5.8 5.4 4 8 4
+                                C9.7 4 11.2 4.9 12 6.2
+                                C12.8 4.9 14.3 4 16 4
+                                C18.6 4 20.8 5.8 20.8 8.8Z"
+                        />
+                    </svg>
+                </button>
+                <div class="imagen-producto">
+                    <img src="./img/Par de zapatillas negras con logos bordados.png" alt="Travis Scott x 1 Retro Low...">
+                </div>
+                <div class="info-producto">
+                    <p class="nombre-producto"> Travis Scott x 1 Retro Low... </p>
+                    <p class="precio-producto"> Desde 2035,00 € </p>
+                </div>
+            </article>
+
+            <article class="carta-producto">
+                <button class="favorito" aria-label="Favorito">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.8 8.8
+                                C20.8 13.4 12 19 12 19
+                                C12 19 3.2 13.4 3.2 8.8
+                                C3.2 5.8 5.4 4 8 4
+                                C9.7 4 11.2 4.9 12 6.2
+                                C12.8 4.9 14.3 4 16 4
+                                C18.6 4 20.8 5.8 20.8 8.8Z"
+                        />
+                    </svg>
+                </button>
+                <div class="imagen-producto">
+                    <img src="./img/Zapatillas Louis Vuitton en estudio oscuro.png" alt="Zapatilla deportiva LV Trainer">
+                </div>
+                <div class="info-producto">
+                    <p class="nombre-producto"> Zapatilla deportiva LV Trainer </p>
+                    <p class="precio-producto"> Desde 1090,00 € </p>
+                </div>
+            </article>
+
+            
+            <article class="carta-producto">
+                <button class="favorito" aria-label="Favorito">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.8 8.8
+                                C20.8 13.4 12 19 12 19
+                                C12 19 3.2 13.4 3.2 8.8
+                                C3.2 5.8 5.4 4 8 4
+                                C9.7 4 11.2 4.9 12 6.2
+                                C12.8 4.9 14.3 4 16 4
+                                C18.6 4 20.8 5.8 20.8 8.8Z"
+                        />
+                    </svg>
+                </button>
+                <div class="imagen-producto">
+                    <img src="./img/Zapatillas premium en blanco y gris.png" alt="Air Jordan 1 de Jordan x Dior">
+                </div>
+                <div class="info-producto">
+                    <p class="nombre-producto"> Air Jordan 1 de Jordan x Dior </p>
+                    <p class="precio-producto"> Desde 1700,00 € </p>
+                </div>
+            </article>
+
+            <article class="carta-producto">
+                <button class="favorito" aria-label="Favorito">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.8 8.8
+                                C20.8 13.4 12 19 12 19
+                                C12 19 3.2 13.4 3.2 8.8
+                                C3.2 5.8 5.4 4 8 4
+                                C9.7 4 11.2 4.9 12 6.2
+                                C12.8 4.9 14.3 4 16 4
+                                C18.6 4 20.8 5.8 20.8 8.8Z"
+                        />
+                    </svg>
+                </button>
+                <div class="imagen-producto">
+                    <img src="./img/Zapatillas rojas y blancas de lujo.png" alt="Air Force 1 de Nike x LV">
+                </div>
+                <div class="info-producto">
+                    <p class="nombre-producto"> Air Force 1 de Nike x LV </p>
+                    <p class="precio-producto"> Desde 7013,00 € </p>
+                </div>
+            </article>
+        </main>
+        <footer>
+
+        </footer>
+    </div>
+
+    <div class="modal-login" id="modalLogin">
+        <div class="login-contenido">
+
+            <a href="#" class="cerrar-login" aria-label="Cerrar">×</a>
+
+            <img src="./img/logotipo SP.png" alt="SnakePick" class="login-logo">
+            <br>
+            <p class="login-etiqueta">BIENVENIDO DE NUEVO</p>
+            <br>
+            <h2>Inicia sesión</h2>
+            <br>
+            <p class="login-descripcion">
+                Accede a tu cuenta de SnakePick.
+            </p>
+            <br>
+            <form class="formulario-login" action="#" method="post">
+                <div class="campo-login">
+                    <label for="emailLogin">Correo electrónico</label>
+                    <input type="email" id="emailLogin" name="email"
+                        placeholder="nombre@ejemplo.com" required>
+                </div>
+
+                <div class="campo-login">
+                    <label for="passwordLogin">Contraseña</label>
+                    <input type="password" id="passwordLogin" name="password"
+                        placeholder="Introduce tu contraseña" required>
+                </div>
+
+                <a href="#" class="boton-login">Iniciar sesión →</a>
+            </form>
+
+            <p class="login-registro">
+                ¿No tienes cuenta?
+                <a href="#registro">Regístrate</a>
+            </p>
+
+        </div>
+    </div>
+
+</body>
+</html>

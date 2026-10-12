@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <title>SnakePick - Air Force 1 Blancas</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(29, 29, 29);
+            color: black;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .pagina {
+            width: 100%;
+            min-height: 100%;
+            background: #fff;
+        }
+
+
+        .header {
+            min-height: 105px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 42px;
+            gap: 25px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 210px;
+            height: auto;
+        }
+
+        .registro {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .registro a {
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .icono {
+            font-size: 22px;
+        }
+
+
+        .resumen {
+            padding-top: 120px;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .resumen h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .resumen p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .botones-pago {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .botones-pago a {
+            width: 350px;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .apple-pay {
+            background: black;
+        }
+
+        .continuar-pago {
+            background: #0671e8;
+        }
+
+        .producto {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 0;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .producto img {
+            width: 190px;
+            height: 210px;
+            object-fit: contain;
+        }
+
+        .datos-producto {
+            flex: 1;
+        }
+
+        .datos-producto h2 {
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        .datos-producto p {
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .cantidad {
+            font-size: 20px;
+        }
+
+        .precio {
+            min-width: 180px;
+            text-align: right;
+        }
+
+        .precio h3 {
+            font-size: 25px;
+            margin-bottom: 45px;
+        }
+
+        .precio p {
+            margin-bottom: 20px;
+        }
+
+        .precio a {
+            font-size: 18px;
+            color: black;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="pagina">
+
+        <header class="header">
+
+            <nav class="nav">
+                <a href="./desktop1.html">☰ Menú</a>
+                <a href="#">⌕ Buscar</a>
+            </nav>
+
+            <div class="logo">
+                <img src="./img/Logotipo geométrico SNEAKPICK en negro.png"
+                    alt="Logo SnakePick">
+            </div>
+
+            <div class="registro">
+                <a href="#">Contáctenos</a>
+                <a href="#" class="icono" aria-label="Favoritos">♡</a>
+                <a href="#modalLogin" class="icono" aria-label="Mi cuenta">♙</a>
+                <a href="#" class="icono" aria-label="Bolsa de compra"></a>
+            </div>
+
+        </header>
+
+        <main>
+            <section class="resumen">
+                <h1>
+                    El total de tu bolsa es de 120,00 €.
+                </h1>
+                <p>Envío y devolución gratis en todos los pedidos.</p>
+                <div class="botones-pago">
+                    <a href="#" class="apple-pay">Pagar con Apple Pay</a>
+                    <a href="#" class="continuar-pago">Continuar con el pago</a>
+                </div>
+            </section>
+
+            <section class="producto">
+                <img src="./img/Zapatillas blancas AF1 en pareja.png"
+                    alt="iPhone 18 Pro Max en plata">
+                <div class="datos-producto">
+                    <h2>Zapatillas blancas AF1 en pareja</h2>
+                </div>
+                <div class="cantidad">
+                    1
+                </div>
+                <div class="precio">
+                    <h3>120,00 €</h3>
+                    <p>Incluido cargo por derechos de autor de 3,25 €</p>
+                    <a href="#">Eliminar</a>
+                </div>
+            </section>
+        </main>
+        <footer>
+        </footer>
+
+    </div>
+</body>
+</html>
