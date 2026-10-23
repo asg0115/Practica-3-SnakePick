@@ -801,3 +801,27 @@ img {
         font-size: 32px;
     }
 }
+
+.footer-licencia {
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer-licencia a {
+    color: #171717;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.footer-licencia a:hover {
+    color: #000;
+}
+
+.footer-licencia img {
+    vertical-align: middle;
+    margin-bottom: 2px;
+}
